@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "question": "How many customers are there in total?",
+        "gold_sql": "SELECT COUNT(*) FROM Customer;",
+        "difficulty": "easy"
+    },
+    {
+        "id": 2,
+        "question": "List the names of all music genres.",
+        "gold_sql": "SELECT NAME FROM GENRE;",
+        "difficulty": "easy"
+    },
+    {
+        "id": 3,
+        "question": "How many customers are from Brazil?",
+        "gold_sql": "SELECT COUNT(*) FROM Customer WHERE Country = 'Brazil';",
+        "difficulty": "easy"
+    },
+    {
+        "id": 4,
+        "question": "How many tracks are longer than 5 minutes? (Track length is stored in milliseconds, and 5 minutes is 300,000.)",
+        "gold_sql": "SELECT COUNT(*) FROM Track WHERE Milliseconds > 300000;",
+        "difficulty": "easy"
+    },
+    {
+        "id": 5,
+        "question": "List the first and last names of all employees whose title is “Sales Support Agent”.",
+        "gold_sql": "SELECT FirstName, LastName FROM Employee WHERE Title = 'Sales Support Agent';",
+        "difficulty": "easy"
+    },
+    {
+        "id": 6,
+        "question": "How many albums are there in total?",
+        "gold_sql": "SELECT COUNT(*) FROM Album;",
+        "difficulty": "easy"
+    },
+    {
+        "id": 7,
+        "question": "How many customers are there in each country? Show the country and the count, sorted by count (highest first), then by country name.",
+        "gold_sql": "SELECT Country, COUNT(CustomerId) AS customer_count FROM Customer GROUP BY Country ORDER BY customer_count DESC, Country;",
+        "difficulty": "medium"
+    },
+    {
+        "id": 8,
+        "question": "What is the total sales amount for each billing country, sorted from highest to lowest?",
+        "gold_sql": "SELECT BillingCountry, SUM(Total) AS total_sales FROM Invoice GROUP BY BillingCountry ORDER BY total_sales DESC, BillingCountry;",
+        "difficulty": "medium"
+    },
+    {
+        "id": 9,
+        "question": "What is the total of all invoices in the year 2010?",
+        "gold_sql": "SELECT SUM(Total) AS total_sales FROM Invoice WHERE InvoiceDate >= '2010-01-01' AND InvoiceDate < '2011-01-01';",
+        "difficulty": "medium"
+    },
+    {
+        "id": 10,
+        "question": "How many tracks belong to each genre? Show the genre name and the count, sorted by count (highest first), then by genre name.",
+        "gold_sql": "SELECT g.Name, COUNT(t.TrackId) AS track_count FROM Genre g JOIN Track t ON t.GenreId = g.GenreId GROUP BY g.GenreId, g.Name ORDER BY track_count DESC, g.Name;",
+        "difficulty": "medium"
+    },
+    {
+        "id": 11,
+        "question": "What are the names and lengths (in milliseconds) of the 5 longest tracks?",
+        "gold_sql": "SELECT Name, Milliseconds FROM Track ORDER BY Milliseconds DESC, Name LIMIT 5;",
+        "difficulty": "medium"
+    },
+    {
+        "id": 12,
+        "question": "Which artist has the most albums? Show the artist name and the number of albums.",
+        "gold_sql": "SELECT ar.Name, COUNT(al.AlbumId) AS album_count FROM Artist ar JOIN Album al ON al.ArtistId = ar.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY album_count DESC, ar.Name LIMIT 1;",
+        "difficulty": "medium"
+    },
+    {
+        "id": 13,
+        "question": "What is the average invoice total?",
+        "gold_sql": "SELECT AVG(Total) AS average_invoice FROM Invoice;",
+        "difficulty": "medium"
+    },
+    {
+        "id": 14,
+        "question": "List the first name, last name and country of all customers whose email ends with @gmail.com.",
+        "gold_sql": "SELECT FirstName, LastName, Country FROM Customer WHERE Email LIKE '%@gmail.com';",
+        "difficulty": "medium"
+    },
+    {
+        "id": 15,
+        "question": "Who are the top 3 customers by total amount spent? Show first name, last name and total spent.",
+        "gold_sql": "SELECT c.FirstName, c.LastName, SUM(i.Total) AS total_spent FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY total_spent DESC, c.LastName, c.FirstName LIMIT 3;",
+        "difficulty": "hard"
+    },
+    {
+        "id": 16,
+        "question": "What are the names of all customers who have bought at least one track from the “Rock” genre? Show each customer only once.",
+        "gold_sql": "SELECT c.FirstName, c.LastName FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.InvoiceId = i.InvoiceId JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId WHERE g.Name = 'Rock' GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY c.LastName, c.FirstName;",
+        "difficulty": "hard"
+    },
+    {
+        "id": 17,
+        "question": "Who are the top 3 artists by total revenue? Revenue is the sum of unit price × quantity from the invoice lines. Show the artist name and revenue.",
+        "gold_sql": "SELECT ar.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Album al ON al.AlbumId = t.AlbumId JOIN Artist ar ON ar.ArtistId = al.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY revenue DESC, ar.Name LIMIT 3;",
+        "difficulty": "hard"
+    },
+    {
+        "id": 18,
+        "question": "What was the total sales amount for each month of the year 2011? Show the month and the total, in month order.",
+        "gold_sql": "SELECT strftime('%m', InvoiceDate) AS month, SUM(Total) AS total_sales FROM Invoice WHERE InvoiceDate >= '2011-01-01' AND InvoiceDate < '2012-01-01' GROUP BY month ORDER BY month;",
+        "difficulty": "hard"
+    },
+    {
+        "id": 19,
+        "question": "What are the top 3 genres by total revenue? Show the genre name and revenue.",
+        "gold_sql": "SELECT g.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId GROUP BY g.GenreId, g.Name ORDER BY revenue DESC, g.Name LIMIT 3;",
+        "difficulty": "hard"
+    },
+    {
+        "id": 20,
+        "question": "Which sales support agent (employee) is assigned to the most customers? Show their first name, last name and the number of customers.",
+        "gold_sql": "SELECT e.FirstName, e.LastName, COUNT(c.CustomerId) AS customer_count FROM Employee e JOIN Customer c ON c.SupportRepId = e.EmployeeId GROUP BY e.EmployeeId, e.FirstName, e.LastName ORDER BY customer_count DESC, e.LastName, e.FirstName LIMIT 1;",
+        "difficulty": "hard"
+    }
+]
