@@ -8,7 +8,7 @@
     {
         "id": 2,
         "question": "List the names of all music genres.",
-        "gold_sql": "SELECT NAME FROM GENRE;",
+        "gold_sql": "SELECT Name FROM Genre;",
         "difficulty": "easy"
     },
     {
@@ -25,7 +25,7 @@
     },
     {
         "id": 5,
-        "question": "List the first and last names of all employees whose title is “Sales Support Agent”.",
+        "question": "List the first and last names of all employees whose title is 'Sales Support Agent'.",
         "gold_sql": "SELECT FirstName, LastName FROM Employee WHERE Title = 'Sales Support Agent';",
         "difficulty": "easy"
     },
@@ -43,7 +43,7 @@
     },
     {
         "id": 8,
-        "question": "What is the total sales amount for each billing country, sorted from highest to lowest?",
+        "question": "What is the total sales amount for each billing country, sorted from highest to lowest, then by country name?",
         "gold_sql": "SELECT BillingCountry, SUM(Total) AS total_sales FROM Invoice GROUP BY BillingCountry ORDER BY total_sales DESC, BillingCountry;",
         "difficulty": "medium"
     },
@@ -61,14 +61,14 @@
     },
     {
         "id": 11,
-        "question": "What are the names and lengths (in milliseconds) of the 5 longest tracks?",
+        "question": "What are the names and lengths (in milliseconds) of the 5 longest tracks? If lengths tie, sort by name.",
         "gold_sql": "SELECT Name, Milliseconds FROM Track ORDER BY Milliseconds DESC, Name LIMIT 5;",
         "difficulty": "medium"
     },
     {
         "id": 12,
         "question": "Which artist has the most albums? Show the artist name and the number of albums.",
-        "gold_sql": "SELECT ar.Name, COUNT(al.AlbumId) AS album_count FROM Artist ar JOIN Album al ON al.ArtistId = ar.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY album_count DESC, ar.Name LIMIT 1;",
+        "gold_sql": "SELECT ar.Name, COUNT(al.AlbumId) AS album_count FROM Artists ar JOIN Album al ON al.ArtistId = ar.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY album_count DESC, ar.Name LIMIT 1;",
         "difficulty": "medium"
     },
     {
@@ -91,14 +91,14 @@
     },
     {
         "id": 16,
-        "question": "What are the names of all customers who have bought at least one track from the “Rock” genre? Show each customer only once.",
-        "gold_sql": "SELECT c.FirstName, c.LastName FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.InvoiceId = i.InvoiceId JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId WHERE g.Name = 'Rock' GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY c.LastName, c.FirstName;",
+        "question": "What are the names of all customers who have bought at least one track from the 'Jazz' genre? Show each customer only once.",
+        "gold_sql": "SELECT c.FirstName, c.LastName FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.InvoiceId = i.InvoiceId JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId WHERE g.Name = 'Jazz' GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY c.LastName, c.FirstName;",
         "difficulty": "hard"
     },
     {
         "id": 17,
         "question": "Who are the top 3 artists by total revenue? Revenue is the sum of unit price × quantity from the invoice lines. Show the artist name and revenue.",
-        "gold_sql": "SELECT ar.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Album al ON al.AlbumId = t.AlbumId JOIN Artist ar ON ar.ArtistId = al.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY revenue DESC, ar.Name LIMIT 3;",
+        "gold_sql": "SELECT ar.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Album al ON al.AlbumId = t.AlbumId JOIN Artists ar ON ar.ArtistId = al.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY revenue DESC, ar.Name LIMIT 3;",
         "difficulty": "hard"
     },
     {

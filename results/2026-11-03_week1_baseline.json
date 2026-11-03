@@ -1,0 +1,208 @@
+{
+  "run": "week1_baseline",
+  "model": "qwen-coder",
+  "date": "2026-11-03",
+  "score": "16/20",
+  "results": [
+    {
+      "id": 1,
+      "difficulty": "easy",
+      "question": "How many customers are there in total?",
+      "gold_sql": "SELECT COUNT(*) FROM Customer;",
+      "pred_sql": "SELECT COUNT(CustomerId) FROM Customer;",
+      "correct": true,
+      "error": null,
+      "seconds": 9.6
+    },
+    {
+      "id": 2,
+      "difficulty": "easy",
+      "question": "List the names of all music genres.",
+      "gold_sql": "SELECT Name FROM Genre;",
+      "pred_sql": "SELECT Name FROM Genre",
+      "correct": true,
+      "error": null,
+      "seconds": 0.2
+    },
+    {
+      "id": 3,
+      "difficulty": "easy",
+      "question": "How many customers are from Brazil?",
+      "gold_sql": "SELECT COUNT(*) FROM Customer WHERE Country = 'Brazil';",
+      "pred_sql": "SELECT COUNT(CustomerId) FROM Customer WHERE Country = 'Brazil';",
+      "correct": true,
+      "error": null,
+      "seconds": 0.3
+    },
+    {
+      "id": 4,
+      "difficulty": "easy",
+      "question": "How many tracks are longer than 5 minutes? (Track length is stored in milliseconds, and 5 minutes is 300,000.)",
+      "gold_sql": "SELECT COUNT(*) FROM Track WHERE Milliseconds > 300000;",
+      "pred_sql": "SELECT COUNT(*) FROM Track WHERE Milliseconds > 300000;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.3
+    },
+    {
+      "id": 5,
+      "difficulty": "easy",
+      "question": "List the first and last names of all employees whose title is 'Sales Support Agent'.",
+      "gold_sql": "SELECT FirstName, LastName FROM Employee WHERE Title = 'Sales Support Agent';",
+      "pred_sql": "SELECT FirstName, LastName FROM Employee WHERE Title = 'Sales Support Agent';",
+      "correct": true,
+      "error": null,
+      "seconds": 0.3
+    },
+    {
+      "id": 6,
+      "difficulty": "easy",
+      "question": "How many albums are there in total?",
+      "gold_sql": "SELECT COUNT(*) FROM Album;",
+      "pred_sql": "SELECT COUNT(*) FROM Album;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.2
+    },
+    {
+      "id": 7,
+      "difficulty": "medium",
+      "question": "How many customers are there in each country? Show the country and the count, sorted by count (highest first), then by country name.",
+      "gold_sql": "SELECT Country, COUNT(CustomerId) AS customer_count FROM Customer GROUP BY Country ORDER BY customer_count DESC, Country;",
+      "pred_sql": "SELECT Country, COUNT(*) AS CustomerCount\nFROM Customer\nGROUP BY Country\nORDER BY CustomerCount DESC, Country;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.4
+    },
+    {
+      "id": 8,
+      "difficulty": "medium",
+      "question": "What is the total sales amount for each billing country, sorted from highest to lowest, then by country name?",
+      "gold_sql": "SELECT BillingCountry, SUM(Total) AS total_sales FROM Invoice GROUP BY BillingCountry ORDER BY total_sales DESC, BillingCountry;",
+      "pred_sql": "SELECT BillingCountry, SUM(Total) AS TotalSales\nFROM Invoice\nGROUP BY BillingCountry\nORDER BY TotalSales DESC, BillingCountry;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.5
+    },
+    {
+      "id": 9,
+      "difficulty": "medium",
+      "question": "What is the total of all invoices in the year 2010?",
+      "gold_sql": "SELECT SUM(Total) AS total_sales FROM Invoice WHERE InvoiceDate >= '2010-01-01' AND InvoiceDate < '2011-01-01';",
+      "pred_sql": "SELECT SUM(Total) AS TotalInvoices2010\nFROM Invoice\nWHERE strftime('%Y', InvoiceDate) = '2010';",
+      "correct": true,
+      "error": null,
+      "seconds": 0.5
+    },
+    {
+      "id": 10,
+      "difficulty": "medium",
+      "question": "How many tracks belong to each genre? Show the genre name and the count, sorted by count (highest first), then by genre name.",
+      "gold_sql": "SELECT g.Name, COUNT(t.TrackId) AS track_count FROM Genre g JOIN Track t ON t.GenreId = g.GenreId GROUP BY g.GenreId, g.Name ORDER BY track_count DESC, g.Name;",
+      "pred_sql": "SELECT g.Name, COUNT(t.TrackId) AS TrackCount\nFROM Genre g\nJOIN Track t ON g.GenreId = t.GenreId\nGROUP BY g.Name\nORDER BY TrackCount DESC, g.Name;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.7
+    },
+    {
+      "id": 11,
+      "difficulty": "medium",
+      "question": "What are the names and lengths (in milliseconds) of the 5 longest tracks? If lengths tie, sort by name.",
+      "gold_sql": "SELECT Name, Milliseconds FROM Track ORDER BY Milliseconds DESC, Name LIMIT 5;",
+      "pred_sql": "SELECT Name, Milliseconds\nFROM Track\nORDER BY Milliseconds DESC\nLIMIT 5;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.3
+    },
+    {
+      "id": 12,
+      "difficulty": "medium",
+      "question": "Which artist has the most albums? Show the artist name and the number of albums.",
+      "gold_sql": "SELECT ar.Name, COUNT(al.AlbumId) AS album_count FROM Artists ar JOIN Album al ON al.ArtistId = ar.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY album_count DESC, ar.Name LIMIT 1;",
+      "pred_sql": "SELECT a.Name, COUNT(*) AS NumberOfAlbums\nFROM Album a\nJOIN Artists ar ON a.ArtistId = ar.ArtistId\nGROUP BY a.ArtistId\nORDER BY NumberOfAlbums DESC\nLIMIT 1;",
+      "correct": false,
+      "error": "no such column: a.Name",
+      "seconds": 0.7
+    },
+    {
+      "id": 13,
+      "difficulty": "medium",
+      "question": "What is the average invoice total?",
+      "gold_sql": "SELECT AVG(Total) AS average_invoice FROM Invoice;",
+      "pred_sql": "SELECT AVG(Total) FROM Invoice",
+      "correct": true,
+      "error": null,
+      "seconds": 0.2
+    },
+    {
+      "id": 14,
+      "difficulty": "medium",
+      "question": "List the first name, last name and country of all customers whose email ends with @gmail.com.",
+      "gold_sql": "SELECT FirstName, LastName, Country FROM Customer WHERE Email LIKE '%@gmail.com';",
+      "pred_sql": "SELECT FirstName, LastName, Country FROM Customer WHERE Email LIKE '%@gmail.com'",
+      "correct": true,
+      "error": null,
+      "seconds": 0.3
+    },
+    {
+      "id": 15,
+      "difficulty": "hard",
+      "question": "Who are the top 3 customers by total amount spent? Show first name, last name and total spent.",
+      "gold_sql": "SELECT c.FirstName, c.LastName, SUM(i.Total) AS total_spent FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY total_spent DESC, c.LastName, c.FirstName LIMIT 3;",
+      "pred_sql": "SELECT c.FirstName, c.LastName, SUM(i.Total) AS TotalSpent\nFROM Customer c\nJOIN Invoice i ON c.CustomerId = i.CustomerId\nGROUP BY c.CustomerId\nORDER BY TotalSpent DESC\nLIMIT 3;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.7
+    },
+    {
+      "id": 16,
+      "difficulty": "hard",
+      "question": "What are the names of all customers who have bought at least one track from the 'Jazz' genre? Show each customer only once.",
+      "gold_sql": "SELECT c.FirstName, c.LastName FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.InvoiceId = i.InvoiceId JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId WHERE g.Name = 'Jazz' GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY c.LastName, c.FirstName;",
+      "pred_sql": "SELECT DISTINCT c.FirstName, c.LastName\nFROM Customer c\nJOIN Invoice i ON c.CustomerId = i.CustomerId\nJOIN InvoiceLine il ON i.InvoiceId = il.InvoiceId\nJOIN Track t ON il.TrackId = t.TrackId\nJOIN Genre g ON t.GenreId = g.GenreId\nWHERE g.Name = 'Jazz';",
+      "correct": false,
+      "error": null,
+      "seconds": 1.0
+    },
+    {
+      "id": 17,
+      "difficulty": "hard",
+      "question": "Who are the top 3 artists by total revenue? Revenue is the sum of unit price \u00d7 quantity from the invoice lines. Show the artist name and revenue.",
+      "gold_sql": "SELECT ar.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Album al ON al.AlbumId = t.AlbumId JOIN Artists ar ON ar.ArtistId = al.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY revenue DESC, ar.Name LIMIT 3;",
+      "pred_sql": "SELECT a.Name, SUM(il.UnitPrice * il.Quantity) AS Revenue\nFROM Album a\nJOIN Track t ON a.AlbumId = t.AlbumId\nJOIN InvoiceLine il ON t.TrackId = il.TrackId\nGROUP BY a.ArtistId\nORDER BY Revenue DESC\nLIMIT 3;",
+      "correct": false,
+      "error": "no such column: a.Name",
+      "seconds": 0.9
+    },
+    {
+      "id": 18,
+      "difficulty": "hard",
+      "question": "What was the total sales amount for each month of the year 2011? Show the month and the total, in month order.",
+      "gold_sql": "SELECT strftime('%m', InvoiceDate) AS month, SUM(Total) AS total_sales FROM Invoice WHERE InvoiceDate >= '2011-01-01' AND InvoiceDate < '2012-01-01' GROUP BY month ORDER BY month;",
+      "pred_sql": "SELECT strftime('%Y-%m', InvoiceDate) AS Month, SUM(Total) AS TotalSales\nFROM Invoice\nWHERE strftime('%Y', InvoiceDate) = '2011'\nGROUP BY Month\nORDER BY Month;",
+      "correct": false,
+      "error": null,
+      "seconds": 0.7
+    },
+    {
+      "id": 19,
+      "difficulty": "hard",
+      "question": "What are the top 3 genres by total revenue? Show the genre name and revenue.",
+      "gold_sql": "SELECT g.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId GROUP BY g.GenreId, g.Name ORDER BY revenue DESC, g.Name LIMIT 3;",
+      "pred_sql": "SELECT g.Name, SUM(il.UnitPrice * il.Quantity) AS Revenue\nFROM Genre g\nJOIN Track t ON g.GenreId = t.GenreId\nJOIN InvoiceLine il ON t.TrackId = il.TrackId\nGROUP BY g.Name\nORDER BY Revenue DESC\nLIMIT 3;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.8
+    },
+    {
+      "id": 20,
+      "difficulty": "hard",
+      "question": "Which sales support agent (employee) is assigned to the most customers? Show their first name, last name and the number of customers.",
+      "gold_sql": "SELECT e.FirstName, e.LastName, COUNT(c.CustomerId) AS customer_count FROM Employee e JOIN Customer c ON c.SupportRepId = e.EmployeeId GROUP BY e.EmployeeId, e.FirstName, e.LastName ORDER BY customer_count DESC, e.LastName, e.FirstName LIMIT 1;",
+      "pred_sql": "SELECT e.FirstName, e.LastName, COUNT(c.CustomerId) AS NumberOfCustomers\nFROM Employee e\nJOIN Customer c ON e.EmployeeId = c.SupportRepId\nGROUP BY e.EmployeeId\nORDER BY NumberOfCustomers DESC\nLIMIT 1;",
+      "correct": true,
+      "error": null,
+      "seconds": 0.7
+    }
+  ]
+}
