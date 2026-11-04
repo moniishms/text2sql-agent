@@ -92,7 +92,7 @@
     {
         "id": 16,
         "question": "What are the names of all customers who have bought at least one track from the 'Jazz' genre? Show each customer only once.",
-        "gold_sql": "SELECT c.FirstName, c.LastName FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.InvoiceId = i.InvoiceId JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId WHERE g.Name = 'Jazz' GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY c.LastName, c.FirstName;",
+        "gold_sql": "SELECT c.FirstName, c.LastName FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.InvoiceId = i.InvoiceId JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId WHERE g.Name = 'Jazz' GROUP BY c.CustomerId, c.FirstName, c.LastName;",
         "difficulty": "hard"
     },
     {
@@ -103,7 +103,7 @@
     },
     {
         "id": 18,
-        "question": "What was the total sales amount for each month of the year 2011? Show the month and the total, in month order.",
+        "question": "What was the total sales amount for each month of the year 2011? Show the month as a two-digit number (01 to 12) and the total, in month order.",
         "gold_sql": "SELECT strftime('%m', InvoiceDate) AS month, SUM(Total) AS total_sales FROM Invoice WHERE InvoiceDate >= '2011-01-01' AND InvoiceDate < '2012-01-01' GROUP BY month ORDER BY month;",
         "difficulty": "hard"
     },

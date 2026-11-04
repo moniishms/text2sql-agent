@@ -1,0 +1,1639 @@
+{
+    "model": "qwen-coder",
+    "total_questions": 20,
+    "executed_successfully": 17,
+    "execution_rate": 85.0,
+    "correct_answers": 17,
+    "accuracy": 85.0,
+    "difficulty_scores": {
+        "easy": {
+            "correct": 6,
+            "total": 6,
+            "accuracy": 100.0
+        },
+        "medium": {
+            "correct": 6,
+            "total": 8,
+            "accuracy": 75.0
+        },
+        "hard": {
+            "correct": 5,
+            "total": 6,
+            "accuracy": 83.33
+        }
+    },
+    "results": [
+        {
+            "id": 1,
+            "question": "How many customers are there in total?",
+            "difficulty": "easy",
+            "gold_sql": "SELECT COUNT(*) FROM Customer;",
+            "generated_sql": "SELECT COUNT(*) FROM Customer;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 6.543,
+            "error": null,
+            "generated_rows": [
+                [
+                    59
+                ]
+            ],
+            "gold_rows": [
+                [
+                    59
+                ]
+            ]
+        },
+        {
+            "id": 2,
+            "question": "List the names of all music genres.",
+            "difficulty": "easy",
+            "gold_sql": "SELECT Name FROM Genre;",
+            "generated_sql": "SELECT Name FROM Genre",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.168,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Rock"
+                ],
+                [
+                    "Jazz"
+                ],
+                [
+                    "Metal"
+                ],
+                [
+                    "Alternative & Punk"
+                ],
+                [
+                    "Rock And Roll"
+                ],
+                [
+                    "Blues"
+                ],
+                [
+                    "Latin"
+                ],
+                [
+                    "Reggae"
+                ],
+                [
+                    "Pop"
+                ],
+                [
+                    "Soundtrack"
+                ],
+                [
+                    "Bossa Nova"
+                ],
+                [
+                    "Easy Listening"
+                ],
+                [
+                    "Heavy Metal"
+                ],
+                [
+                    "R&B/Soul"
+                ],
+                [
+                    "Electronica/Dance"
+                ],
+                [
+                    "World"
+                ],
+                [
+                    "Hip Hop/Rap"
+                ],
+                [
+                    "Science Fiction"
+                ],
+                [
+                    "TV Shows"
+                ],
+                [
+                    "Sci Fi & Fantasy"
+                ],
+                [
+                    "Drama"
+                ],
+                [
+                    "Comedy"
+                ],
+                [
+                    "Alternative"
+                ],
+                [
+                    "Classical"
+                ],
+                [
+                    "Opera"
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Rock"
+                ],
+                [
+                    "Jazz"
+                ],
+                [
+                    "Metal"
+                ],
+                [
+                    "Alternative & Punk"
+                ],
+                [
+                    "Rock And Roll"
+                ],
+                [
+                    "Blues"
+                ],
+                [
+                    "Latin"
+                ],
+                [
+                    "Reggae"
+                ],
+                [
+                    "Pop"
+                ],
+                [
+                    "Soundtrack"
+                ],
+                [
+                    "Bossa Nova"
+                ],
+                [
+                    "Easy Listening"
+                ],
+                [
+                    "Heavy Metal"
+                ],
+                [
+                    "R&B/Soul"
+                ],
+                [
+                    "Electronica/Dance"
+                ],
+                [
+                    "World"
+                ],
+                [
+                    "Hip Hop/Rap"
+                ],
+                [
+                    "Science Fiction"
+                ],
+                [
+                    "TV Shows"
+                ],
+                [
+                    "Sci Fi & Fantasy"
+                ],
+                [
+                    "Drama"
+                ],
+                [
+                    "Comedy"
+                ],
+                [
+                    "Alternative"
+                ],
+                [
+                    "Classical"
+                ],
+                [
+                    "Opera"
+                ]
+            ]
+        },
+        {
+            "id": 3,
+            "question": "How many customers are from Brazil?",
+            "difficulty": "easy",
+            "gold_sql": "SELECT COUNT(*) FROM Customer WHERE Country = 'Brazil';",
+            "generated_sql": "SELECT COUNT(CustomerId) AS NumberOfCustomers\nFROM Customer\nWHERE Country = 'Brazil';",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.326,
+            "error": null,
+            "generated_rows": [
+                [
+                    5
+                ]
+            ],
+            "gold_rows": [
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "id": 4,
+            "question": "How many tracks are longer than 5 minutes? (Track length is stored in milliseconds, and 5 minutes is 300,000.)",
+            "difficulty": "easy",
+            "gold_sql": "SELECT COUNT(*) FROM Track WHERE Milliseconds > 300000;",
+            "generated_sql": "SELECT COUNT(*) AS NumberOfTracks\nFROM Track\nWHERE Milliseconds > 300000;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.378,
+            "error": null,
+            "generated_rows": [
+                [
+                    1069
+                ]
+            ],
+            "gold_rows": [
+                [
+                    1069
+                ]
+            ]
+        },
+        {
+            "id": 5,
+            "question": "List the first and last names of all employees whose title is 'Sales Support Agent'.",
+            "difficulty": "easy",
+            "gold_sql": "SELECT FirstName, LastName FROM Employee WHERE Title = 'Sales Support Agent';",
+            "generated_sql": "SELECT FirstName, LastName FROM Employee WHERE Title = 'Sales Support Agent';",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.276,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Jane",
+                    "Peacock"
+                ],
+                [
+                    "Margaret",
+                    "Park"
+                ],
+                [
+                    "Steve",
+                    "Johnson"
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Jane",
+                    "Peacock"
+                ],
+                [
+                    "Margaret",
+                    "Park"
+                ],
+                [
+                    "Steve",
+                    "Johnson"
+                ]
+            ]
+        },
+        {
+            "id": 6,
+            "question": "How many albums are there in total?",
+            "difficulty": "easy",
+            "gold_sql": "SELECT COUNT(*) FROM Album;",
+            "generated_sql": "SELECT COUNT(*) FROM Album;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.175,
+            "error": null,
+            "generated_rows": [
+                [
+                    347
+                ]
+            ],
+            "gold_rows": [
+                [
+                    347
+                ]
+            ]
+        },
+        {
+            "id": 7,
+            "question": "How many customers are there in each country? Show the country and the count, sorted by count (highest first), then by country name.",
+            "difficulty": "medium",
+            "gold_sql": "SELECT Country, COUNT(CustomerId) AS customer_count FROM Customer GROUP BY Country ORDER BY customer_count DESC, Country;",
+            "generated_sql": "SELECT Country, COUNT(*) AS CustomerCount\nFROM Customer\nGROUP BY Country\nORDER BY CustomerCount DESC, Country;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.402,
+            "error": null,
+            "generated_rows": [
+                [
+                    "USA",
+                    13
+                ],
+                [
+                    "Canada",
+                    8
+                ],
+                [
+                    "Brazil",
+                    5
+                ],
+                [
+                    "France",
+                    5
+                ],
+                [
+                    "Germany",
+                    4
+                ],
+                [
+                    "United Kingdom",
+                    3
+                ],
+                [
+                    "Czech Republic",
+                    2
+                ],
+                [
+                    "India",
+                    2
+                ],
+                [
+                    "Portugal",
+                    2
+                ],
+                [
+                    "Argentina",
+                    1
+                ],
+                [
+                    "Australia",
+                    1
+                ],
+                [
+                    "Austria",
+                    1
+                ],
+                [
+                    "Belgium",
+                    1
+                ],
+                [
+                    "Chile",
+                    1
+                ],
+                [
+                    "Denmark",
+                    1
+                ],
+                [
+                    "Finland",
+                    1
+                ],
+                [
+                    "Hungary",
+                    1
+                ],
+                [
+                    "Ireland",
+                    1
+                ],
+                [
+                    "Italy",
+                    1
+                ],
+                [
+                    "Netherlands",
+                    1
+                ],
+                [
+                    "Norway",
+                    1
+                ],
+                [
+                    "Poland",
+                    1
+                ],
+                [
+                    "Spain",
+                    1
+                ],
+                [
+                    "Sweden",
+                    1
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "USA",
+                    13
+                ],
+                [
+                    "Canada",
+                    8
+                ],
+                [
+                    "Brazil",
+                    5
+                ],
+                [
+                    "France",
+                    5
+                ],
+                [
+                    "Germany",
+                    4
+                ],
+                [
+                    "United Kingdom",
+                    3
+                ],
+                [
+                    "Czech Republic",
+                    2
+                ],
+                [
+                    "India",
+                    2
+                ],
+                [
+                    "Portugal",
+                    2
+                ],
+                [
+                    "Argentina",
+                    1
+                ],
+                [
+                    "Australia",
+                    1
+                ],
+                [
+                    "Austria",
+                    1
+                ],
+                [
+                    "Belgium",
+                    1
+                ],
+                [
+                    "Chile",
+                    1
+                ],
+                [
+                    "Denmark",
+                    1
+                ],
+                [
+                    "Finland",
+                    1
+                ],
+                [
+                    "Hungary",
+                    1
+                ],
+                [
+                    "Ireland",
+                    1
+                ],
+                [
+                    "Italy",
+                    1
+                ],
+                [
+                    "Netherlands",
+                    1
+                ],
+                [
+                    "Norway",
+                    1
+                ],
+                [
+                    "Poland",
+                    1
+                ],
+                [
+                    "Spain",
+                    1
+                ],
+                [
+                    "Sweden",
+                    1
+                ]
+            ]
+        },
+        {
+            "id": 8,
+            "question": "What is the total sales amount for each billing country, sorted from highest to lowest, then by country name?",
+            "difficulty": "medium",
+            "gold_sql": "SELECT BillingCountry, SUM(Total) AS total_sales FROM Invoice GROUP BY BillingCountry ORDER BY total_sales DESC, BillingCountry;",
+            "generated_sql": "SELECT BillingCountry, SUM(Total) AS TotalSales\nFROM Invoice\nGROUP BY BillingCountry\nORDER BY TotalSales DESC, BillingCountry;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.458,
+            "error": null,
+            "generated_rows": [
+                [
+                    "USA",
+                    523.06
+                ],
+                [
+                    "Canada",
+                    303.96
+                ],
+                [
+                    "France",
+                    195.1
+                ],
+                [
+                    "Brazil",
+                    190.1
+                ],
+                [
+                    "Germany",
+                    156.48
+                ],
+                [
+                    "United Kingdom",
+                    112.86
+                ],
+                [
+                    "Czech Republic",
+                    90.24
+                ],
+                [
+                    "Portugal",
+                    77.24
+                ],
+                [
+                    "India",
+                    75.26
+                ],
+                [
+                    "Chile",
+                    46.62
+                ],
+                [
+                    "Hungary",
+                    45.62
+                ],
+                [
+                    "Ireland",
+                    45.62
+                ],
+                [
+                    "Austria",
+                    42.62
+                ],
+                [
+                    "Finland",
+                    41.62
+                ],
+                [
+                    "Netherlands",
+                    40.62
+                ],
+                [
+                    "Norway",
+                    39.62
+                ],
+                [
+                    "Sweden",
+                    38.62
+                ],
+                [
+                    "Argentina",
+                    37.62
+                ],
+                [
+                    "Australia",
+                    37.62
+                ],
+                [
+                    "Belgium",
+                    37.62
+                ],
+                [
+                    "Denmark",
+                    37.62
+                ],
+                [
+                    "Italy",
+                    37.62
+                ],
+                [
+                    "Poland",
+                    37.62
+                ],
+                [
+                    "Spain",
+                    37.62
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "USA",
+                    523.06
+                ],
+                [
+                    "Canada",
+                    303.96
+                ],
+                [
+                    "France",
+                    195.1
+                ],
+                [
+                    "Brazil",
+                    190.1
+                ],
+                [
+                    "Germany",
+                    156.48
+                ],
+                [
+                    "United Kingdom",
+                    112.86
+                ],
+                [
+                    "Czech Republic",
+                    90.24
+                ],
+                [
+                    "Portugal",
+                    77.24
+                ],
+                [
+                    "India",
+                    75.26
+                ],
+                [
+                    "Chile",
+                    46.62
+                ],
+                [
+                    "Hungary",
+                    45.62
+                ],
+                [
+                    "Ireland",
+                    45.62
+                ],
+                [
+                    "Austria",
+                    42.62
+                ],
+                [
+                    "Finland",
+                    41.62
+                ],
+                [
+                    "Netherlands",
+                    40.62
+                ],
+                [
+                    "Norway",
+                    39.62
+                ],
+                [
+                    "Sweden",
+                    38.62
+                ],
+                [
+                    "Argentina",
+                    37.62
+                ],
+                [
+                    "Australia",
+                    37.62
+                ],
+                [
+                    "Belgium",
+                    37.62
+                ],
+                [
+                    "Denmark",
+                    37.62
+                ],
+                [
+                    "Italy",
+                    37.62
+                ],
+                [
+                    "Poland",
+                    37.62
+                ],
+                [
+                    "Spain",
+                    37.62
+                ]
+            ]
+        },
+        {
+            "id": 9,
+            "question": "What is the total of all invoices in the year 2010?",
+            "difficulty": "medium",
+            "gold_sql": "SELECT SUM(Total) AS total_sales FROM Invoice WHERE InvoiceDate >= '2010-01-01' AND InvoiceDate < '2011-01-01';",
+            "generated_sql": "SELECT SUM(T2.Total) AS TotalInvoices\nFROM Invoice AS T1\nJOIN InvoiceLine AS T2 ON T1.InvoiceId = T2.InvoiceId\nWHERE strftime('%Y', T1.InvoiceDate) = '2010';",
+            "execution_success": false,
+            "result_correct": false,
+            "generation_time_seconds": 0.749,
+            "error": "no such column: T2.Total"
+        },
+        {
+            "id": 10,
+            "question": "How many tracks belong to each genre? Show the genre name and the count, sorted by count (highest first), then by genre name.",
+            "difficulty": "medium",
+            "gold_sql": "SELECT g.Name, COUNT(t.TrackId) AS track_count FROM Genre g JOIN Track t ON t.GenreId = g.GenreId GROUP BY g.GenreId, g.Name ORDER BY track_count DESC, g.Name;",
+            "generated_sql": "SELECT g.Name, COUNT(t.TrackId) AS TrackCount\nFROM Genre g\nJOIN Track t ON g.GenreId = t.GenreId\nGROUP BY g.Name\nORDER BY TrackCount DESC, g.Name;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.647,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Rock",
+                    1297
+                ],
+                [
+                    "Latin",
+                    579
+                ],
+                [
+                    "Metal",
+                    374
+                ],
+                [
+                    "Alternative & Punk",
+                    332
+                ],
+                [
+                    "Jazz",
+                    130
+                ],
+                [
+                    "TV Shows",
+                    93
+                ],
+                [
+                    "Blues",
+                    81
+                ],
+                [
+                    "Classical",
+                    74
+                ],
+                [
+                    "Drama",
+                    64
+                ],
+                [
+                    "R&B/Soul",
+                    61
+                ],
+                [
+                    "Reggae",
+                    58
+                ],
+                [
+                    "Pop",
+                    48
+                ],
+                [
+                    "Soundtrack",
+                    43
+                ],
+                [
+                    "Alternative",
+                    40
+                ],
+                [
+                    "Hip Hop/Rap",
+                    35
+                ],
+                [
+                    "Electronica/Dance",
+                    30
+                ],
+                [
+                    "Heavy Metal",
+                    28
+                ],
+                [
+                    "World",
+                    28
+                ],
+                [
+                    "Sci Fi & Fantasy",
+                    26
+                ],
+                [
+                    "Easy Listening",
+                    24
+                ],
+                [
+                    "Comedy",
+                    17
+                ],
+                [
+                    "Bossa Nova",
+                    15
+                ],
+                [
+                    "Science Fiction",
+                    13
+                ],
+                [
+                    "Rock And Roll",
+                    12
+                ],
+                [
+                    "Opera",
+                    1
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Rock",
+                    1297
+                ],
+                [
+                    "Latin",
+                    579
+                ],
+                [
+                    "Metal",
+                    374
+                ],
+                [
+                    "Alternative & Punk",
+                    332
+                ],
+                [
+                    "Jazz",
+                    130
+                ],
+                [
+                    "TV Shows",
+                    93
+                ],
+                [
+                    "Blues",
+                    81
+                ],
+                [
+                    "Classical",
+                    74
+                ],
+                [
+                    "Drama",
+                    64
+                ],
+                [
+                    "R&B/Soul",
+                    61
+                ],
+                [
+                    "Reggae",
+                    58
+                ],
+                [
+                    "Pop",
+                    48
+                ],
+                [
+                    "Soundtrack",
+                    43
+                ],
+                [
+                    "Alternative",
+                    40
+                ],
+                [
+                    "Hip Hop/Rap",
+                    35
+                ],
+                [
+                    "Electronica/Dance",
+                    30
+                ],
+                [
+                    "Heavy Metal",
+                    28
+                ],
+                [
+                    "World",
+                    28
+                ],
+                [
+                    "Sci Fi & Fantasy",
+                    26
+                ],
+                [
+                    "Easy Listening",
+                    24
+                ],
+                [
+                    "Comedy",
+                    17
+                ],
+                [
+                    "Bossa Nova",
+                    15
+                ],
+                [
+                    "Science Fiction",
+                    13
+                ],
+                [
+                    "Rock And Roll",
+                    12
+                ],
+                [
+                    "Opera",
+                    1
+                ]
+            ]
+        },
+        {
+            "id": 11,
+            "question": "What are the names and lengths (in milliseconds) of the 5 longest tracks? If lengths tie, sort by name.",
+            "difficulty": "medium",
+            "gold_sql": "SELECT Name, Milliseconds FROM Track ORDER BY Milliseconds DESC, Name LIMIT 5;",
+            "generated_sql": "SELECT T.Name, T.Milliseconds\nFROM Track AS T\nORDER BY T.Milliseconds DESC\nLIMIT 5;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.395,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Occupation / Precipice",
+                    5286953
+                ],
+                [
+                    "Through a Looking Glass",
+                    5088838
+                ],
+                [
+                    "Greetings from Earth, Pt. 1",
+                    2960293
+                ],
+                [
+                    "The Man With Nine Lives",
+                    2956998
+                ],
+                [
+                    "Battlestar Galactica, Pt. 2",
+                    2956081
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Occupation / Precipice",
+                    5286953
+                ],
+                [
+                    "Through a Looking Glass",
+                    5088838
+                ],
+                [
+                    "Greetings from Earth, Pt. 1",
+                    2960293
+                ],
+                [
+                    "The Man With Nine Lives",
+                    2956998
+                ],
+                [
+                    "Battlestar Galactica, Pt. 2",
+                    2956081
+                ]
+            ]
+        },
+        {
+            "id": 12,
+            "question": "Which artist has the most albums? Show the artist name and the number of albums.",
+            "difficulty": "medium",
+            "gold_sql": "SELECT ar.Name, COUNT(al.AlbumId) AS album_count FROM Artists ar JOIN Album al ON al.ArtistId = ar.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY album_count DESC, ar.Name LIMIT 1;",
+            "generated_sql": "SELECT a.Name, COUNT(*) AS NumberOfAlbums\nFROM Album a\nJOIN Artists ar ON a.ArtistId = ar.ArtistId\nGROUP BY a.ArtistId\nORDER BY NumberOfAlbums DESC\nLIMIT 1;",
+            "execution_success": false,
+            "result_correct": false,
+            "generation_time_seconds": 0.672,
+            "error": "no such column: a.Name"
+        },
+        {
+            "id": 13,
+            "question": "What is the average invoice total?",
+            "difficulty": "medium",
+            "gold_sql": "SELECT AVG(Total) AS average_invoice FROM Invoice;",
+            "generated_sql": "SELECT AVG(Total) AS AverageInvoiceTotal\nFROM Invoice;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.257,
+            "error": null,
+            "generated_rows": [
+                [
+                    5.651941747572815
+                ]
+            ],
+            "gold_rows": [
+                [
+                    5.651941747572815
+                ]
+            ]
+        },
+        {
+            "id": 14,
+            "question": "List the first name, last name and country of all customers whose email ends with @gmail.com.",
+            "difficulty": "medium",
+            "gold_sql": "SELECT FirstName, LastName, Country FROM Customer WHERE Email LIKE '%@gmail.com';",
+            "generated_sql": "SELECT T1.FirstName, T1.LastName, T1.Country\nFROM Customer AS T1\nWHERE T1.Email LIKE '%@gmail.com';",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.454,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Fran\u00e7ois",
+                    "Tremblay",
+                    "Canada"
+                ],
+                [
+                    "Helena",
+                    "Hol\u00fd",
+                    "Czech Republic"
+                ],
+                [
+                    "Heather",
+                    "Leacock",
+                    "USA"
+                ],
+                [
+                    "Frank",
+                    "Ralston",
+                    "USA"
+                ],
+                [
+                    "Julia",
+                    "Barnett",
+                    "USA"
+                ],
+                [
+                    "Martha",
+                    "Silk",
+                    "Canada"
+                ],
+                [
+                    "Dominique",
+                    "Lefebvre",
+                    "France"
+                ],
+                [
+                    "Phil",
+                    "Hughes",
+                    "United Kingdom"
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Fran\u00e7ois",
+                    "Tremblay",
+                    "Canada"
+                ],
+                [
+                    "Helena",
+                    "Hol\u00fd",
+                    "Czech Republic"
+                ],
+                [
+                    "Heather",
+                    "Leacock",
+                    "USA"
+                ],
+                [
+                    "Frank",
+                    "Ralston",
+                    "USA"
+                ],
+                [
+                    "Julia",
+                    "Barnett",
+                    "USA"
+                ],
+                [
+                    "Martha",
+                    "Silk",
+                    "Canada"
+                ],
+                [
+                    "Dominique",
+                    "Lefebvre",
+                    "France"
+                ],
+                [
+                    "Phil",
+                    "Hughes",
+                    "United Kingdom"
+                ]
+            ]
+        },
+        {
+            "id": 15,
+            "question": "Who are the top 3 customers by total amount spent? Show first name, last name and total spent.",
+            "difficulty": "hard",
+            "gold_sql": "SELECT c.FirstName, c.LastName, SUM(i.Total) AS total_spent FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId GROUP BY c.CustomerId, c.FirstName, c.LastName ORDER BY total_spent DESC, c.LastName, c.FirstName LIMIT 3;",
+            "generated_sql": "SELECT c.FirstName, c.LastName, SUM(i.Total) AS TotalSpent\nFROM Customer c\nJOIN Invoice i ON c.CustomerId = i.CustomerId\nGROUP BY c.CustomerId\nORDER BY TotalSpent DESC\nLIMIT 3;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.696,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Helena",
+                    "Hol\u00fd",
+                    49.62
+                ],
+                [
+                    "Richard",
+                    "Cunningham",
+                    47.62
+                ],
+                [
+                    "Luis",
+                    "Rojas",
+                    46.62
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Helena",
+                    "Hol\u00fd",
+                    49.62
+                ],
+                [
+                    "Richard",
+                    "Cunningham",
+                    47.62
+                ],
+                [
+                    "Luis",
+                    "Rojas",
+                    46.62
+                ]
+            ]
+        },
+        {
+            "id": 16,
+            "question": "What are the names of all customers who have bought at least one track from the 'Jazz' genre? Show each customer only once.",
+            "difficulty": "hard",
+            "gold_sql": "SELECT c.FirstName, c.LastName FROM Customer c JOIN Invoice i ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.InvoiceId = i.InvoiceId JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId WHERE g.Name = 'Jazz' GROUP BY c.CustomerId, c.FirstName, c.LastName;",
+            "generated_sql": "SELECT DISTINCT c.FirstName, c.LastName\nFROM Customer c\nJOIN Invoice i ON c.CustomerId = i.CustomerId\nJOIN InvoiceLine il ON i.InvoiceId = il.InvoiceId\nJOIN Track t ON il.TrackId = t.TrackId\nJOIN Genre g ON t.GenreId = g.GenreId\nWHERE g.Name = 'Jazz';",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.984,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Mark",
+                    "Philips"
+                ],
+                [
+                    "John",
+                    "Gordon"
+                ],
+                [
+                    "Frank",
+                    "Harris"
+                ],
+                [
+                    "Jack",
+                    "Smith"
+                ],
+                [
+                    "Tim",
+                    "Goyer"
+                ],
+                [
+                    "Dominique",
+                    "Lefebvre"
+                ],
+                [
+                    "Kathy",
+                    "Chase"
+                ],
+                [
+                    "Stanis\u0142aw",
+                    "W\u00f3jcik"
+                ],
+                [
+                    "Phil",
+                    "Hughes"
+                ],
+                [
+                    "Fran\u00e7ois",
+                    "Tremblay"
+                ],
+                [
+                    "Franti\u0161ek",
+                    "Wichterlov\u00e1"
+                ],
+                [
+                    "Dan",
+                    "Miller"
+                ],
+                [
+                    "Manoj",
+                    "Pareek"
+                ],
+                [
+                    "Fynn",
+                    "Zimmermann"
+                ],
+                [
+                    "Astrid",
+                    "Gruber"
+                ],
+                [
+                    "Isabelle",
+                    "Mercier"
+                ],
+                [
+                    "Terhi",
+                    "H\u00e4m\u00e4l\u00e4inen"
+                ],
+                [
+                    "Hugh",
+                    "O'Reilly"
+                ],
+                [
+                    "Wyatt",
+                    "Girard"
+                ],
+                [
+                    "Enrique",
+                    "Mu\u00f1oz"
+                ],
+                [
+                    "Puja",
+                    "Srivastava"
+                ],
+                [
+                    "Niklas",
+                    "Schr\u00f6der"
+                ],
+                [
+                    "Joakim",
+                    "Johansson"
+                ],
+                [
+                    "Aaron",
+                    "Mitchell"
+                ],
+                [
+                    "Heather",
+                    "Leacock"
+                ],
+                [
+                    "Edward",
+                    "Francis"
+                ],
+                [
+                    "Camille",
+                    "Bernard"
+                ],
+                [
+                    "Steve",
+                    "Murray"
+                ],
+                [
+                    "Diego",
+                    "Guti\u00e9rrez"
+                ],
+                [
+                    "Michelle",
+                    "Brooks"
+                ],
+                [
+                    "Madalena",
+                    "Sampaio"
+                ],
+                [
+                    "Martha",
+                    "Silk"
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Fran\u00e7ois",
+                    "Tremblay"
+                ],
+                [
+                    "Franti\u0161ek",
+                    "Wichterlov\u00e1"
+                ],
+                [
+                    "Astrid",
+                    "Gruber"
+                ],
+                [
+                    "Mark",
+                    "Philips"
+                ],
+                [
+                    "Frank",
+                    "Harris"
+                ],
+                [
+                    "Jack",
+                    "Smith"
+                ],
+                [
+                    "Michelle",
+                    "Brooks"
+                ],
+                [
+                    "Tim",
+                    "Goyer"
+                ],
+                [
+                    "Dan",
+                    "Miller"
+                ],
+                [
+                    "Kathy",
+                    "Chase"
+                ],
+                [
+                    "Heather",
+                    "Leacock"
+                ],
+                [
+                    "John",
+                    "Gordon"
+                ],
+                [
+                    "Edward",
+                    "Francis"
+                ],
+                [
+                    "Martha",
+                    "Silk"
+                ],
+                [
+                    "Aaron",
+                    "Mitchell"
+                ],
+                [
+                    "Madalena",
+                    "Sampaio"
+                ],
+                [
+                    "Fynn",
+                    "Zimmermann"
+                ],
+                [
+                    "Niklas",
+                    "Schr\u00f6der"
+                ],
+                [
+                    "Camille",
+                    "Bernard"
+                ],
+                [
+                    "Dominique",
+                    "Lefebvre"
+                ],
+                [
+                    "Wyatt",
+                    "Girard"
+                ],
+                [
+                    "Isabelle",
+                    "Mercier"
+                ],
+                [
+                    "Terhi",
+                    "H\u00e4m\u00e4l\u00e4inen"
+                ],
+                [
+                    "Hugh",
+                    "O'Reilly"
+                ],
+                [
+                    "Stanis\u0142aw",
+                    "W\u00f3jcik"
+                ],
+                [
+                    "Enrique",
+                    "Mu\u00f1oz"
+                ],
+                [
+                    "Joakim",
+                    "Johansson"
+                ],
+                [
+                    "Phil",
+                    "Hughes"
+                ],
+                [
+                    "Steve",
+                    "Murray"
+                ],
+                [
+                    "Diego",
+                    "Guti\u00e9rrez"
+                ],
+                [
+                    "Manoj",
+                    "Pareek"
+                ],
+                [
+                    "Puja",
+                    "Srivastava"
+                ]
+            ]
+        },
+        {
+            "id": 17,
+            "question": "Who are the top 3 artists by total revenue? Revenue is the sum of unit price \u00d7 quantity from the invoice lines. Show the artist name and revenue.",
+            "difficulty": "hard",
+            "gold_sql": "SELECT ar.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Album al ON al.AlbumId = t.AlbumId JOIN Artists ar ON ar.ArtistId = al.ArtistId GROUP BY ar.ArtistId, ar.Name ORDER BY revenue DESC, ar.Name LIMIT 3;",
+            "generated_sql": "SELECT a.Name, SUM(il.UnitPrice * il.Quantity) AS Revenue\nFROM Album a\nJOIN InvoiceLine il ON a.AlbumId = il.AlbumId\nGROUP BY a.ArtistId, a.Name\nORDER BY Revenue DESC\nLIMIT 3;",
+            "execution_success": false,
+            "result_correct": false,
+            "generation_time_seconds": 0.766,
+            "error": "no such column: a.Name"
+        },
+        {
+            "id": 18,
+            "question": "What was the total sales amount for each month of the year 2011? Show the month as a two-digit number (01 to 12) and the total, in month order.",
+            "difficulty": "hard",
+            "gold_sql": "SELECT strftime('%m', InvoiceDate) AS month, SUM(Total) AS total_sales FROM Invoice WHERE InvoiceDate >= '2011-01-01' AND InvoiceDate < '2012-01-01' GROUP BY month ORDER BY month;",
+            "generated_sql": "SELECT strftime('%m', InvoiceDate) AS Month, SUM(Total) AS TotalSales\nFROM Invoice\nWHERE strftime('%Y', InvoiceDate) = '2011'\nGROUP BY Month\nORDER BY Month;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.654,
+            "error": null,
+            "generated_rows": [
+                [
+                    "01",
+                    37.62
+                ],
+                [
+                    "02",
+                    37.62
+                ],
+                [
+                    "03",
+                    37.62
+                ],
+                [
+                    "04",
+                    51.62
+                ],
+                [
+                    "05",
+                    42.62
+                ],
+                [
+                    "06",
+                    50.62
+                ],
+                [
+                    "07",
+                    37.62
+                ],
+                [
+                    "08",
+                    37.62
+                ],
+                [
+                    "09",
+                    37.62
+                ],
+                [
+                    "10",
+                    37.62
+                ],
+                [
+                    "11",
+                    23.76
+                ],
+                [
+                    "12",
+                    37.62
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "01",
+                    37.62
+                ],
+                [
+                    "02",
+                    37.62
+                ],
+                [
+                    "03",
+                    37.62
+                ],
+                [
+                    "04",
+                    51.62
+                ],
+                [
+                    "05",
+                    42.62
+                ],
+                [
+                    "06",
+                    50.62
+                ],
+                [
+                    "07",
+                    37.62
+                ],
+                [
+                    "08",
+                    37.62
+                ],
+                [
+                    "09",
+                    37.62
+                ],
+                [
+                    "10",
+                    37.62
+                ],
+                [
+                    "11",
+                    23.76
+                ],
+                [
+                    "12",
+                    37.62
+                ]
+            ]
+        },
+        {
+            "id": 19,
+            "question": "What are the top 3 genres by total revenue? Show the genre name and revenue.",
+            "difficulty": "hard",
+            "gold_sql": "SELECT g.Name, SUM(il.UnitPrice * il.Quantity) AS revenue FROM InvoiceLine il JOIN Track t ON t.TrackId = il.TrackId JOIN Genre g ON g.GenreId = t.GenreId GROUP BY g.GenreId, g.Name ORDER BY revenue DESC, g.Name LIMIT 3;",
+            "generated_sql": "SELECT g.Name, SUM(il.UnitPrice * il.Quantity) AS Revenue\nFROM Genre g\nJOIN Track t ON g.GenreId = t.GenreId\nJOIN InvoiceLine il ON t.TrackId = il.TrackId\nGROUP BY g.Name\nORDER BY Revenue DESC\nLIMIT 3;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.83,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Rock",
+                    826.65
+                ],
+                [
+                    "Latin",
+                    382.14
+                ],
+                [
+                    "Metal",
+                    261.36
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Rock",
+                    826.65
+                ],
+                [
+                    "Latin",
+                    382.14
+                ],
+                [
+                    "Metal",
+                    261.36
+                ]
+            ]
+        },
+        {
+            "id": 20,
+            "question": "Which sales support agent (employee) is assigned to the most customers? Show their first name, last name and the number of customers.",
+            "difficulty": "hard",
+            "gold_sql": "SELECT e.FirstName, e.LastName, COUNT(c.CustomerId) AS customer_count FROM Employee e JOIN Customer c ON c.SupportRepId = e.EmployeeId GROUP BY e.EmployeeId, e.FirstName, e.LastName ORDER BY customer_count DESC, e.LastName, e.FirstName LIMIT 1;",
+            "generated_sql": "SELECT e.FirstName, e.LastName, COUNT(c.CustomerId) AS NumberOfCustomers\nFROM Employee e\nJOIN Customer c ON e.EmployeeId = c.SupportRepId\nGROUP BY e.EmployeeId\nORDER BY NumberOfCustomers DESC\nLIMIT 1;",
+            "execution_success": true,
+            "result_correct": true,
+            "generation_time_seconds": 0.696,
+            "error": null,
+            "generated_rows": [
+                [
+                    "Jane",
+                    "Peacock",
+                    21
+                ]
+            ],
+            "gold_rows": [
+                [
+                    "Jane",
+                    "Peacock",
+                    21
+                ]
+            ]
+        }
+    ]
+}
